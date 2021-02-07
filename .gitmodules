@@ -1,0 +1,6 @@
+[submodule "godot"]
+	path = godot
+	url = https://github.com/godotengine/godot.git
+[submodule "build/godot_buildtool"]
+	path = build/godot_buildtool
+	url = https://github.com/MadMcCrow/godot-buildtool
