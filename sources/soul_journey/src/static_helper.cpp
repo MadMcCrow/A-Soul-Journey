@@ -3,7 +3,11 @@
 #include "core/object/object.h"
 #include "core/string/print_string.h"
 
-void Armory::print_msg(Object *obj, const char *txt)
+<<<<<<< HEAD
+void ASJ::print_msg(Object *obj, const char *txt)
+=======
+void ASJ::print_msg_impl(Object *obj, const char *txt)
+>>>>>>> 0518144 (:construction::zap: start SJ specific code)
 {
     if (obj)
     {
@@ -16,7 +20,11 @@ void Armory::print_msg(Object *obj, const char *txt)
     print_verbose(txt);
 }
 
-void Armory::print_msg(Object *obj, const String &txt)
+<<<<<<< HEAD
+void ASJ::print_msg(Object *obj, const String &txt)
+=======
+void ASJ::print_msg_impl(Object *obj, const String &txt)
+>>>>>>> 0518144 (:construction::zap: start SJ specific code)
 {
     if (obj)
     {

@@ -8,16 +8,16 @@
 #
 
 # import functions: 
-from godot-buildtool.functions.platform import findFolder
-from godot-buildtool.functions.platform import getGitFolders
-from godot-buildtool.functions.platform import getPlatform
-from godot-buildtool.functions.platform import isLinux
-from godot-buildtool.functions.platform import isWindows
-from godot-buildtool.functions.platform import isArm
-from godot-buildtool.functions.platform import isMacOs
+from godotbuildtool.functions.platform import findFolder
+from godotbuildtool.functions.platform import getGitFolders
+from godotbuildtool.functions.platform import getPlatform
+from godotbuildtool.functions.platform import isLinux
+from godotbuildtool.functions.platform import isWindows
+from godotbuildtool.functions.platform import isArm
+from godotbuildtool.functions.platform import isMacOs
 
 
-extra_suffix = "armory"
+extra_suffix = "soul_journey"
 custom_modules = findFolder("../", "sources")
 
 bits     = getPlatform()[0]
@@ -124,12 +124,12 @@ module_regex_enabled            = True
 module_gdnavigation_enabled     = True  # TODO/FIXME :Godot will not load without this module
 
 # Godot scripting
-module_visual_script_enabled  = False
+module_visual_script_enabled  = True    # visual scripting can be used for low importance stuff
 module_gdnative_enabled       = False
 module_gdscript_enabled       = True    # GDScript is used to try stuff
 module_mono_enabled           = False
 
-module_bullet_enabled           = False # no physics in Armory
+module_bullet_enabled           = True
 module_camera_enabled           = False # no camera video feed
 module_gridmap_enabled          = False # we use our custom system ours is simpler
 module_gltf_enabled             = False # no gltf for now.

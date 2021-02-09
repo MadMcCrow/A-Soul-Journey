@@ -1,10 +1,10 @@
 {
     "project" :
     {
-        "name"     :   "Armory",
+        "name"     :   "soul_journey",
         "custom.py":   "../build/custom.py",
         "sources"  :   "sources",
-        "description" :"Armory is a RTS inspired by abandonware _Arsenal : Taste The Power_"
+        "description" :"a Soul's journey is an attempt on creating an ARPG in Godot"
     },
     "godot" :
     {

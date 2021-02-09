@@ -1,8 +1,8 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
-#ifndef ARMORY_STATIC_HELPER_H
-#define ARMORY_STATIC_HELPER_H
+#ifndef ASJ_STATIC_HELPER_H
+#define ASJ_STATIC_HELPER_H
 
 #include "core/object/object.h" // for cast
 
@@ -36,15 +36,13 @@
 /**  Generate the correct ADD_PROPERTY compliant with GETSET */
 #define BIND_PROPERTY_ENUM(class, var, hint)  BIND_GETSET(var, class) ADD_PROPERTY(PropertyInfo( Variant::INT, #var, PROPERTY_HINT_ENUM, hint), XSTR(SETTER(var)), XSTR(GETTER(var)) );
 
-
 /**  Generate the correct ADD_PROPERTY compliant with GETSET */
 #define BIND_PROPERTY_GETSET(class, variant, var, property_hint_type, hint) BIND_GETSET(var, class) ADD_PROPERTY_GETSET(variant, var, property_hint_type, hint);
-
 
 class Object;
 class String;
 
-namespace Armory
+namespace ASJ
 {
      /**
      * SMALL_NUMBER
@@ -54,11 +52,12 @@ namespace Armory
     
 
      /**
-     * print_msg
+     * print_msg_impl
      * @brief prints debug info with some added context
+     * @note please use macro instead
      */
-    void print_msg( Object * obj, const char* txt);
-    void print_msg( Object * obj, const String &txt );
+    void print_msg_impl( Object * obj, const char* txt);
+    void print_msg_impl( Object * obj, const String &txt );
     
     /**
      * clamp
@@ -93,5 +92,17 @@ namespace Armory
 
     }
 
+<<<<<<< HEAD
 }
-#endif //ARMORY_STATIC_HELPER_H
+=======
+} // namespace ASJ
+
+#ifdef TOOLS_ENABLED 
+#define LOG(message) ASJ::print_msg_impl(this, message);
+#else // TOOLS_ENABLED
+#define LOG(message) ;
+#endif // TOOLS_ENABLED
+
+
+>>>>>>> 0518144 (:construction::zap: start SJ specific code)
+#endif //ASJ_STATIC_HELPER_H

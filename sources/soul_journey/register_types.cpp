@@ -1,50 +1,48 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
-
-
-#include "map/grid_node.h"        // GridNode
-#include "map/tile_mesh.h"        // tile mesh
-#include "map/tile_manager.h"     // TileManager
-#include "map/tile_instance.h"     // TileInstance
-#include "map/tile_collection.h"  // TileCollection
+<<<<<<< HEAD
+#include "nodes/actor_3d.h"
+=======
+#include "actors/actor_3d.h"
+#include "actors/character.h"
+#include "player/camera_control.h"
+>>>>>>> 0518144 (:construction::zap: start SJ specific code)
 #include "register_types.h"
 
-
 #ifdef TOOLS_ENABLED
-#include "editor/resource_importer_tile_mesh.h"
+//#include "editor/resource_importer_tile_mesh.h"
 #endif //TOOLS_ENABLED
-
-
 
 #ifdef TOOLS_ENABLED
 template<typename Class>
-void _register_armory_importer()
+void _register_soul_journey_importer()
 {
-	Ref<Class> import;
-	import.instance();
-	ResourceFormatImporter::get_singleton()->add_importer(import);
+	//Ref<Class> import;
+	//import.instance();
+	//ResourceFormatImporter::get_singleton()->add_importer(import);
 }
 #endif // TOOLS_ENABLED
 
-void register_armory_types() 
+void register_soul_journey_types() 
 {
-  ClassDB::register_class<Armory::GridNode>();
-  ClassDB::register_class<Armory::Actor3D>();
-  ClassDB::register_class<Armory::TileManager>();
-  ClassDB::register_class<Armory::TileCollection>();
-  ClassDB::register_class<Armory::TileMesh>();
-  ClassDB::register_class<Armory::TileInstance>();
+<<<<<<< HEAD
+  ClassDB::register_class<ASJ::Actor3D>();
 
+=======
+	ClassDB::register_class<ASJ::Actor3D>();
+	ClassDB::register_class<ASJ::CameraControl>();
+	ClassDB::register_class<ASJ::Character>();
+>>>>>>> 0518144 (:construction::zap: start SJ specific code)
 #ifdef TOOLS_ENABLED
 if (Engine::get_singleton()->is_editor_hint()) 
 {
-	_register_armory_importer<Armory::ResourceImporterTileMesh>();
+//	_register_asj_importer<ASJ::ResourceImporterTileMesh>();
 }
 #endif
 }
 
-void unregister_armory_types() 
+void unregister_soul_journey_types() 
 {
 }
 

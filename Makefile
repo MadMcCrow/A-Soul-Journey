@@ -9,4 +9,4 @@
 
 # `make all` builds the editor
 all:
-	@python ./build/godot-buildtool/main.py --build
+	@python ./build/godotbuildtool/main.py --build --json=build/config.json

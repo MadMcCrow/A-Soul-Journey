@@ -1,13 +1,13 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
-#ifndef ARMORY_ACTOR_3D_H
-#define ARMORY_ACTOR_3D_H
+#ifndef ASJ_ACTOR_3D_H
+#define ASJ_ACTOR_3D_H
 
 #include "scene/3d/node_3d.h" // Node godot class
 
-/** Armory namespace */
-namespace Armory {
+/** ASJ namespace */
+namespace ASJ {
 
 /**
  *  Actor3D 
@@ -25,8 +25,11 @@ public:
     // dstr
     ~Actor3D();
 
-
-
+    /**
+     *  _notification
+     *  @brief call update functions based on notifications
+     */
+   	void _notification(int p_notification);
     /**
      *  ready
      *  @brief called when node is ready to start doing stuff
@@ -35,21 +38,20 @@ public:
     virtual void ready();
 
     /**
-     *  update
+     *  process
      *  @brief called each frame
      *  @param delta : deltaframe
-     *  @note  is connected via _bind_methods.
-     *  @todo  investigate using signals
+     *  @note  is connected via _notification.
      */
-    virtual void update(float delta);
+    virtual void process(float delta);
 
     /**
-     *  update
-     *  @brief called on a change in the node tree
-     *  @todo  investigate using signals
+     *  process
+     *  @brief called each frame
+     *  @param delta : deltaframe
+     *  @note  is connected via _notification.
      */
-    virtual void tree_update();
-    
+    virtual void physics_process(float delta);
 
      /**
      *  _bind_methods native function : expose function to GDScript
@@ -59,6 +61,6 @@ public:
 
 };
 
-} // namespace Armory
+} // namespace ASJ
 
-#endif //ACTOR_3D_H
+#endif //ASJ_ACTOR_3D_H

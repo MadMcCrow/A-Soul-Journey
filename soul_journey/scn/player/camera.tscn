@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SphereMesh" id=1]
+
+[node name="CameraControl" type="CameraControl"]
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.831867, 0.554975, 0, -0.554975, 0.831867, 0, 5.4694, 5.38018 )
+cull_mask = 524287
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.831867, 0.554975, 0, -0.554975, 0.831867, 0, 0, 0 )
+layers = 524288
+mesh = SubResource( 1 )
+material/0 = null
+script = null

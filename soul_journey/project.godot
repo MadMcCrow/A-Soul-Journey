@@ -10,8 +10,10 @@ config_version=4
 
 [application]
 
-config/name="A Soul Journey"
-run/main_scene=
+config/name="A Soul's Journey"
+run/main_scene="res://scn/gym/gym_camera.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="godot-user"
 config/icon="res://icon.png"
 
 [debug]
