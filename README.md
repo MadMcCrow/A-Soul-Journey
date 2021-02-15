@@ -33,6 +33,7 @@ we try to use emojis to make changes more meaningful and easily identify them
 | emoji             | commit contains               |
 | ------------------|:-----------------------------:|
 | :zap:             | improvement                   |
+| :tada:            | new feature                   |
 | :construction:    | WIP                           |
 | :art:             | graphical asset               |
 | :wrench:          | update build system           |

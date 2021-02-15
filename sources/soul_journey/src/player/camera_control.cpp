@@ -7,7 +7,7 @@
 using namespace ASJ;
 
 
-CameraControl::CameraControl() : Actor3D()
+CameraControl::CameraControl() : Node3D()
 {
 }
 

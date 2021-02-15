@@ -1,13 +1,9 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
-<<<<<<< HEAD
-#include "nodes/actor_3d.h"
-=======
 #include "actors/actor_3d.h"
 #include "actors/character.h"
 #include "player/camera_control.h"
->>>>>>> 0518144 (:construction::zap: start SJ specific code)
 #include "register_types.h"
 
 #ifdef TOOLS_ENABLED
@@ -26,14 +22,10 @@ void _register_soul_journey_importer()
 
 void register_soul_journey_types() 
 {
-<<<<<<< HEAD
-  ClassDB::register_class<ASJ::Actor3D>();
 
-=======
 	ClassDB::register_class<ASJ::Actor3D>();
 	ClassDB::register_class<ASJ::CameraControl>();
 	ClassDB::register_class<ASJ::Character>();
->>>>>>> 0518144 (:construction::zap: start SJ specific code)
 #ifdef TOOLS_ENABLED
 if (Engine::get_singleton()->is_editor_hint()) 
 {

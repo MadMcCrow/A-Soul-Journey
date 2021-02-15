@@ -29,10 +29,6 @@ module_llvm_name   = "use_llvm"
 module_shared = globals()[module_shared_name] if module_shared_name in globals() else (ARGUMENTS.get('module_soul_journey_shared', 'no')!= 'no')
 module_llvm   = globals()[module_llvm_name]   if module_llvm_name   in globals() else (ARGUMENTS.get('use_llvm', 'no') != 'no')
 
-print()
-
-print( "module {} is shared : {}".format(ModuleName, module_shared))
-print( "module {} is build with llvm : {}".format(ModuleName, module_llvm))
 
 # Find all sources in path
 def find_sources(path : str)  -> list:
@@ -59,8 +55,6 @@ sources += (find_sources(src_folder))
 
 # remove duplicates:
 sources = list(set(list(sources)))
-print(sources)
-
 
 # godot is not yet fully compatible with '-std=c++20' so we stay at sooner
 

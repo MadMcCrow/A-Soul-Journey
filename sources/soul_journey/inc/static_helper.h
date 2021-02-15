@@ -6,6 +6,16 @@
 
 #include "core/object/object.h" // for cast
 
+#ifdef TOOLS_ENABLED
+#include "core/string/print_string.h"
+// print with messabe with extra context
+#define LOG(message) print_verbose(String(__PRETTY_FUNCTION__) + String(" : ") + String(message));
+#else // TOOLS_ENABLED
+// do not print if there's no editor
+#define LOG(message) ;
+#endif // TOOLS_ENABLED
+
+
 #define STR(str) #str
 #define XSTR(str) STR(str)
 
@@ -51,13 +61,6 @@ namespace ASJ
     constexpr float SMALL_NUMBER = 0.000001;
     
 
-     /**
-     * print_msg_impl
-     * @brief prints debug info with some added context
-     * @note please use macro instead
-     */
-    void print_msg_impl( Object * obj, const char* txt);
-    void print_msg_impl( Object * obj, const String &txt );
     
     /**
      * clamp
@@ -91,18 +94,6 @@ namespace ASJ
         return Object::cast_to<To>(Src);
 
     }
-
-<<<<<<< HEAD
-}
-=======
 } // namespace ASJ
 
-#ifdef TOOLS_ENABLED 
-#define LOG(message) ASJ::print_msg_impl(this, message);
-#else // TOOLS_ENABLED
-#define LOG(message) ;
-#endif // TOOLS_ENABLED
-
-
->>>>>>> 0518144 (:construction::zap: start SJ specific code)
 #endif //ASJ_STATIC_HELPER_H

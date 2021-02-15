@@ -33,6 +33,7 @@ material/0 = null
 script = null
 
 [node name="CameraControl" parent="3dWorld" instance=ExtResource( 2 )]
+process_priority = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
