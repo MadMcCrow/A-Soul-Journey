@@ -13,7 +13,8 @@
  *  Notification macro to make classes receive notifications
  */
 #define NOTIFICATIONS(class) \
-        void _notification(int p_what){_notification_call(p_what);} \
+        void _notification(int p_what){_notification_call(p_what);} 
+        /*\
         virtual void _process_script_interface(float delta) {process(delta);} \
         virtual void _physics_process_script_interface(float delta) {physics_process(delta);} \
         virtual void _connect_signals() override \
@@ -23,6 +24,7 @@
             tree->connect(SceneStringNames::get_singleton()->_physics_process,\
             callable_mp(static_cast<class*>(this), &class::_physics_process_script_interface)); \
         }} \
+        */
 
 
 
@@ -53,18 +55,17 @@ protected:
      */
     virtual void _notification_call(int p_notification);
 
-    /**
-     *  _connect_signals
-     *  @brief connect signals will overloaded to connect signal to the correct class
-     */
-    virtual void _connect_signals() {};
-
 private:
-    /** _parented_script_interface @brief helper to call parented - also does the connect */
-    void _parented_script_interface();
 
 // here are the scripting events you should override :
 public:
+
+    /**
+     *  parented
+     *  @brief called when node is has been added to the tree to start doing stuff
+     *  @note  is connected via notifications
+     */
+    virtual void parented();
 
     /**
      *  ready
@@ -77,15 +78,15 @@ public:
      *  process
      *  @brief called each frame
      *  @param delta : deltaframe
-     *  @note  is connected via signal.
+     *  @note  is connected via notifications
      */
     virtual void process(float delta);
 
     /**
-     *  process
-     *  @brief called each frame
-     *  @param delta : deltaframe
-     *  @note  is connected via signal (_notification didn't worked).
+     *  physics_process
+     *  @brief called each physics step
+     *  @param delta : deltatime between steps
+     *  @note  is connected via notifications
      */
     virtual void physics_process(float delta);
 

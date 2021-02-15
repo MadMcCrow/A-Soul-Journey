@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="SphereMesh" id=3]
 
 [node name="CameraControl" type="CameraControl"]
+pause_mode = 2
 script = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -13,6 +14,6 @@ script = null
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.831867, 0.554975, 0, -0.554975, 0.831867, 0, 0, 0 )
 layers = 524288
-mesh = SubResource( 1 )
+mesh = SubResource( 3 )
 material/0 = null
 script = null

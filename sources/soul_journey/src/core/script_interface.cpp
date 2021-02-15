@@ -33,8 +33,7 @@ ScriptInterface::ScriptInterface()
 {
     if (Node* this_node = _get_underlying_node(this))
     {
-        //this_node->connect(SceneStringNames::get_singleton()->ready, callable_mp(this, &ScriptInterface::ready));
-        //this_node->connect(SceneStringNames::get_singleton()->tree_entered, callable_mp(this, &Actor3D::tree_update))
+        this_node->set_pause_mode(Node::PAUSE_MODE_PROCESS);
     }
 }
 
@@ -53,7 +52,7 @@ void ScriptInterface::_notification_call(int p_notification)
     {
         case Node::NOTIFICATION_PARENTED :
         {
-            _connect_signals();
+            parented();
         }
         break;
         case Node::NOTIFICATION_READY    :
@@ -61,20 +60,25 @@ void ScriptInterface::_notification_call(int p_notification)
             ready();
         }
         break;
-        // this does not work
-        /*
         case Node::NOTIFICATION_PROCESS:
+        {
+            if(SceneTree * tree = _get_scene_tree(this))
+                process(tree->get_process_time());
+        }
         break;
         case Node::NOTIFICATION_PHYSICS_PROCESS:
+        {
+            if(SceneTree * tree = _get_scene_tree(this))
+                physics_process(tree->get_physics_process_time());
+        }
         break;
-        */   
         default:
             break;
     }
 }
 
 
-void ScriptInterface::_parented_script_interface()
+void ScriptInterface::parented()
 {
     //connect
 }
@@ -86,7 +90,7 @@ void ScriptInterface::process( float delta)
 
 void ScriptInterface::physics_process(float delta)
 {
-    // nnor here
+    // nor here
 }
 
 

@@ -23,6 +23,7 @@ void CameraControl::ready()
 
 void CameraControl::process(float delta)
 {
+    LOG("process called");
     move_on_mouse_screen_border(delta);
 }
 
