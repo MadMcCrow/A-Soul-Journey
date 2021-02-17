@@ -19,7 +19,7 @@ if this does not work for you, I suggest you check [`build/config.json`](build/c
 
 ### prototyping approach
 
-The game is made with gdscript, c++, visual scrputing and everything in between, in order to prototype as fast as we can.
+The game is made with gdscript, c++, visual scripting and everything in between, in order to prototype as fast as we can.
 
 ## Help and Participate.
 
