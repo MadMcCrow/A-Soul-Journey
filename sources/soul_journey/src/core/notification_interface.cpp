@@ -2,7 +2,7 @@
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
 // ASJ includes
-#include "core/script_interface.h"
+#include "core/notification_interface.h"
 #include "static_helper.h"
 // Godot includes
 #include "scene/main/node.h"
@@ -11,7 +11,7 @@
 
 using namespace ASJ;
 
-Node* _get_underlying_node(ScriptInterface * interface)
+Node* _get_underlying_node(NotificationInterface * interface)
 {
     if (Node* ret_node = dynamic_cast<Node*>(interface))
     {
@@ -20,7 +20,7 @@ Node* _get_underlying_node(ScriptInterface * interface)
     return nullptr;
 }
 
-SceneTree* _get_scene_tree(ScriptInterface * interface)
+SceneTree* _get_scene_tree(NotificationInterface * interface)
 {
     if (Node* ret_node = dynamic_cast<Node*>(interface))
     {
@@ -29,25 +29,19 @@ SceneTree* _get_scene_tree(ScriptInterface * interface)
     return nullptr;
 }
 
-ScriptInterface::ScriptInterface()
-{
-    if (Node* this_node = _get_underlying_node(this))
-    {
-        this_node->set_pause_mode(Node::PAUSE_MODE_PROCESS);
-    }
-}
-
-ScriptInterface::~ScriptInterface()
-{
-}
-
-void ScriptInterface::ready()
+NotificationInterface::NotificationInterface()
 {
 
 }
 
-void ScriptInterface::_notification_call(int p_notification)
+NotificationInterface::~NotificationInterface()
 {
+}
+
+
+void NotificationInterface::_notification_call(int p_notification)
+{
+    LOG(itos(p_notification));
     switch (p_notification)
     {
         case Node::NOTIFICATION_PARENTED :
@@ -72,25 +66,18 @@ void ScriptInterface::_notification_call(int p_notification)
                 physics_process(tree->get_physics_process_time());
         }
         break;
+        case Node::NOTIFICATION_PAUSED:
+        {
+            pause();
+        }
+        break;
+        case Node::NOTIFICATION_UNPAUSED:
+        {
+            unpause();
+        }
+        break;
         default:
             break;
     }
 }
-
-
-void ScriptInterface::parented()
-{
-    //connect
-}
-
-void ScriptInterface::process( float delta)
-{
-    // nothing to do here
-}
-
-void ScriptInterface::physics_process(float delta)
-{
-    // nor here
-}
-
 

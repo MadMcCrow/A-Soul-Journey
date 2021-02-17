@@ -19,11 +19,12 @@ CameraControl::~CameraControl()
 void CameraControl::ready()
 {
     LOG("Ready called");
+    // make process work
+    set_process(true);
 }
 
 void CameraControl::process(float delta)
 {
-    LOG("process called");
     move_on_mouse_screen_border(delta);
 }
 

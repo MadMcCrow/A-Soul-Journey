@@ -5,7 +5,7 @@
 #define ASJ_CAMERA_H
 
 #include "scene/3d/node_3d.h" // Node godot class
-#include "core/script_interface.h"
+#include "core/notification_interface.h"
 #include "core/input/input_event.h"
 #include "static_helper.h"
 
@@ -17,9 +17,9 @@ namespace ASJ {
  *  @brief implements functions like Ready, Update, etc.
  *  all bindings are done in this class
  */
-class CameraControl : public Node3D, public ScriptInterface {
+class CameraControl : public Node3D, public NotificationInterface {
     GDCLASS(CameraControl, Node3D);
-    NOTIFICATIONS(CameraControl)
+    NOTIFICATIONS()
 
 protected:
 	static void _bind_methods();

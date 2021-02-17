@@ -8,7 +8,7 @@
 using namespace ASJ;
 
 
-Actor3D::Actor3D() : ScriptInterface()
+Actor3D::Actor3D() : NotificationInterface()
 {
 }
 

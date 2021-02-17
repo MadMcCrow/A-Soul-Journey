@@ -5,7 +5,7 @@
 #define ASJ_CHARACTER_H
 
 #include "scene/3d/physics_body_3d.h" // KinematicBody3D
-#include "core/script_interface.h"
+#include "core/notification_interface.h"
 
 /** ASJ namespace */
 namespace ASJ {
@@ -15,9 +15,9 @@ namespace ASJ {
  *  @brief implements functions like Ready, Update, etc.
  *  all bindings are done in this class
  */
-class Character : public KinematicBody3D, public ScriptInterface  {
+class Character : public KinematicBody3D, public NotificationInterface  {
     GDCLASS(Character, KinematicBody3D);
-    NOTIFICATIONS(Character)
+    NOTIFICATIONS()
 
 public:
 

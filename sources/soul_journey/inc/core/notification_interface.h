@@ -1,8 +1,8 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
-#ifndef ASJ_SCRIPT_INTERFACE_H
-#define ASJ_SCRIPT_INTERFACE_H
+#ifndef ASJ_notification_interface_H
+#define ASJ_notification_interface_H
 
 #include "scene/main/node.h"
 #include "scene/scene_string_names.h"
@@ -12,19 +12,8 @@
 /**
  *  Notification macro to make classes receive notifications
  */
-#define NOTIFICATIONS(class) \
+#define NOTIFICATIONS() \
         void _notification(int p_what){_notification_call(p_what);} 
-        /*\
-        virtual void _process_script_interface(float delta) {process(delta);} \
-        virtual void _physics_process_script_interface(float delta) {physics_process(delta);} \
-        virtual void _connect_signals() override \
-        { if (SceneTree* tree =get_tree()){ \
-            tree->connect(SceneStringNames::get_singleton()->_process, \
-            callable_mp(static_cast<class*>(this), &class::_process_script_interface)); \
-            tree->connect(SceneStringNames::get_singleton()->_physics_process,\
-            callable_mp(static_cast<class*>(this), &class::_physics_process_script_interface)); \
-        }} \
-        */
 
 
 
@@ -32,20 +21,21 @@
 namespace ASJ {
 
 /**
- *  ScriptInterface : allows making scripting in C++ 
+ *  NotificationInterface : allows making scripting in C++ 
  *  @brief implements functions like Ready, Update, etc.
  *  all bindings are done in this class, so you just need to inherit from it
- *  @note 
+ *  @note maybe rename as NotificationInterface
+ *  @todo : avoid process and physics_process unecessary calls to node tree (for deltatime)
  */
-class ScriptInterface {
+class NotificationInterface {
 
 public:
 
     // ctr
-    ScriptInterface();
+    NotificationInterface();
 
     // dstr
-    ~ScriptInterface();
+    ~NotificationInterface();
 
 //  here are the interface functions 
 protected:
@@ -55,43 +45,53 @@ protected:
      */
     virtual void _notification_call(int p_notification);
 
-private:
 
-// here are the scripting events you should override :
+// next are the notification events you should override
+// they are called via notification, and do nothing by default
+// @note : maybe this could be protected ?
 public:
 
     /**
      *  parented
      *  @brief called when node is has been added to the tree to start doing stuff
-     *  @note  is connected via notifications
      */
-    virtual void parented();
+    virtual void parented() {};
 
     /**
      *  ready
      *  @brief called when node is ready to start doing stuff
-     *  @note  is connected via notifications
      */
-    virtual void ready();
+    virtual void ready() {};
 
     /**
      *  process
      *  @brief called each frame
      *  @param delta : deltaframe
-     *  @note  is connected via notifications
      */
-    virtual void process(float delta);
+    virtual void process(float delta) {};
 
     /**
      *  physics_process
      *  @brief called each physics step
      *  @param delta : deltatime between steps
+     */
+    virtual void physics_process(float delta) {};
+
+    /**
+     *  pause
+     *  @brief called when game is paused
+     */
+    virtual void pause() {};
+
+    /**
+     *  pause
+     *  @brief called when game is paused
      *  @note  is connected via notifications
      */
-    virtual void physics_process(float delta);
+    virtual void unpause() {};
 
 };
 
 } // namespace ASJ
 
-#endif //ASJ_SCRIPT_INTERFACE_H
+#endif //ASJ_notification_interface_H
