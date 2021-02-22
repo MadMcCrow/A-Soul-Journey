@@ -9,12 +9,12 @@
 
 # import functions: 
 from godotbuildtool.functions.platform import findFolder
-from godotbuildtool.functions.platform import getGitFolders
 from godotbuildtool.functions.platform import getPlatform
 from godotbuildtool.functions.platform import isLinux
 from godotbuildtool.functions.platform import isWindows
 from godotbuildtool.functions.platform import isArm
 from godotbuildtool.functions.platform import isMacOs
+from godotbuildtool.functions.git      import getGitFolders
 
 
 extra_suffix = "soul_journey"
@@ -23,6 +23,9 @@ custom_modules = findFolder("../", "sources")
 bits     = getPlatform()[0]
 arch     = getPlatform()[2]
 platform = getPlatform()[1]
+
+#target (debug|release_debug|release)
+target="release_debug"
 
 # optimize is  (speed|size) 
 optimize = "speed"
