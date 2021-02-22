@@ -45,7 +45,8 @@ Vector2 CameraBoom::get_position_on_cycloid()
     float rotation_radian = (arm_length / max_arm_length) / 2;
     float x = circle_radius * (rotation_radian - sin(rotation_radian));
     float y = circle_radius * ( 1 - cos (rotation_radian));
-    return Vector2(x,y);
+    // just inverse the curve then
+    return Vector2(x, -1 * y);
 }
 
 void CameraBoom::update_boom()

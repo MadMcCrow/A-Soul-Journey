@@ -41,7 +41,6 @@ NotificationInterface::~NotificationInterface()
 
 void NotificationInterface::_notification_call(int p_notification)
 {
-    LOG(itos(p_notification));
     switch (p_notification)
     {
         case Node::NOTIFICATION_PARENTED :
