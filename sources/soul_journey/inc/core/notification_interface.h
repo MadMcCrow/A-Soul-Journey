@@ -63,6 +63,7 @@ public:
      */
     virtual void ready() {};
 
+
     /**
      *  process
      *  @brief called each frame
@@ -89,6 +90,14 @@ public:
      *  @note  is connected via notifications
      */
     virtual void unpause() {};
+
+#ifdef TOOLS_ENABLED
+    /**
+     *  editor_ready
+     *  @brief called when node is ready to start doing stuff, in editor
+     */
+    virtual void editor_ready() {};
+#endif
 
 };
 

@@ -1,8 +1,8 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
-#ifndef ASJ_CAMERA_H
-#define ASJ_CAMERA_H
+#ifndef ASJ_CAMERA_CONTROL_H
+#define ASJ_CAMERA_CONTROL_H
 
 #include "scene/3d/node_3d.h" // Node godot class
 #include "core/notification_interface.h"
@@ -13,9 +13,8 @@
 namespace ASJ {
 
 /**
- *  Actor3D 
- *  @brief implements functions like Ready, Update, etc.
- *  all bindings are done in this class
+ *  CameraControl 
+ *  @brief root node to move a camera around
  */
 class CameraControl : public Node3D, public NotificationInterface {
     GDCLASS(CameraControl, Node3D);
@@ -82,4 +81,4 @@ protected:
 
 } // namespace ASJ
 
-#endif //ACTOR_3D_H
+#endif //ASJ_CAMERA_CONTROL_H

@@ -4,6 +4,7 @@
 #include "actors/actor_3d.h"
 #include "actors/character.h"
 #include "player/camera_control.h"
+#include "player/camera_boom.h"
 #include "register_types.h"
 
 #ifdef TOOLS_ENABLED
@@ -25,7 +26,9 @@ void register_soul_journey_types()
 
 	ClassDB::register_class<ASJ::Actor3D>();
 	ClassDB::register_class<ASJ::CameraControl>();
+	ClassDB::register_class<ASJ::CameraBoom>();
 	ClassDB::register_class<ASJ::Character>();
+
 #ifdef TOOLS_ENABLED
 if (Engine::get_singleton()->is_editor_hint()) 
 {

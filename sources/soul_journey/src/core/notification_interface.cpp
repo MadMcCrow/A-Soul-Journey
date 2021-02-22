@@ -51,7 +51,11 @@ void NotificationInterface::_notification_call(int p_notification)
         break;
         case Node::NOTIFICATION_READY    :
         {
-            ready();
+#ifdef TOOLS_ENABLED
+        Engine::get_singleton()->is_editor_hint() ? editor_ready() : ready();
+#else
+        ready();
+#endif
         }
         break;
         case Node::NOTIFICATION_PROCESS:

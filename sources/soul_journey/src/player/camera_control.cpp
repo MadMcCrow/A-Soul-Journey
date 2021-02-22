@@ -18,8 +18,6 @@ CameraControl::~CameraControl()
 
 void CameraControl::ready()
 {
-    LOG("Ready called");
-    // make process work
     set_process(true);
 }
 
@@ -30,6 +28,7 @@ void CameraControl::process(float delta)
 
 void CameraControl::unhandled_input(const Ref<InputEvent> &p_event, bool p_local_coords)
 {
+    LOG("input not handled !")
 }
 
 void CameraControl::move_on_mouse_screen_border(float delta)
@@ -46,19 +45,23 @@ Vector2 CameraControl::get_border_movement() const
     Vector2 retval = Vector2();
     if (mouse_pos.x < border_margin.x)
     {
-        retval.x = 1.f;
+        const float dist = (border_margin.x - mouse_pos.x) / border_margin.x ;
+        retval.x = - 1.f *  dist*dist;
     }
     else if (mouse_pos.x > view_size.x - border_margin.x)
     {
-        retval.x = -1.f;
+        const float dist = (border_margin.x - (view_size.x - mouse_pos.x)) / border_margin.x ;
+        retval.x = 1.f *  dist*dist;
     }
     if (mouse_pos.y < border_margin.y)
     {
-        retval.y = 1.f;
+        const float dist = (border_margin.y - mouse_pos.y) / border_margin.y ;
+        retval.y = -1.f * dist*dist;
     }
     else if (mouse_pos.y > view_size.y - border_margin.y)
     {
-        retval.y = -1.f;
+        const float dist = (border_margin.y - (view_size.y - mouse_pos.y)) / border_margin.y ;
+        retval.y = 1.f *  dist*dist;
     }
     return retval;
 }

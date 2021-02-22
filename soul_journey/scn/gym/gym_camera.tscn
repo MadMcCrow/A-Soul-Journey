@@ -27,7 +27,7 @@ pause_mode = 2
 script = null
 
 [node name="CameraControl" parent="3D_Root" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4667, 0, 56.4667 )
+border_margin = Vector2i( 100, 100 )
 script = ExtResource( 2 )
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="3D_Root"]
