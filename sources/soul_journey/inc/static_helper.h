@@ -15,7 +15,6 @@
 #define LOG(message) ;
 #endif // TOOLS_ENABLED
 
-
 #define STR(str) #str
 #define XSTR(str) STR(str)
 
@@ -23,13 +22,13 @@
 #define GETTER(var) get_##var
 
 /** Generate getter for a property */
-#define GET(type, var) inline type GETTER(var)() const { return  var ; }
+#define GET(type, var) _ALWAYS_INLINE_ type GETTER(var)() const { return  var ; }
 /** Generate setter for a property */
-#define SET(type, var) inline void SETTER(var)(const type &val) { var = val; }
+#define SET(type, var) _ALWAYS_INLINE_ void SETTER(var)(const type &val) { var = val; }
 /** Generate setter and getter for a property */
 #define GETSET(type, var)   GET(type, var) SET(type, var)
 /** Generate setter for a property , pass by copy */
-#define SET_COPY(type, var) inline void SETTER(var)(type val) { var = val; }
+#define SET_COPY(type, var) _ALWAYS_INLINE_ void SETTER(var)(type val) { var = val; }
 /** Generate setter and getter for a property,  pass by copy */
 #define GETSET_COPY(type, var)  GET(type, var) SET_COPY(type, var)
 
@@ -65,10 +64,10 @@ namespace ASJ
     /**
      * clamp
      * @brief a function to clamp anything implementing '<'
-     * @note shamelessly stolen from std
+     * @note  similar to std implementation
      */
     template<class T>
-    constexpr const T& clamp( const T& v, const T& lo, const T& hi )
+    _ALWAYS_INLINE_ constexpr const T& clamp( const T& v, const T& lo, const T& hi )
     {
     	return (v < lo) ? lo : (hi < v) ? hi : v;
     }
@@ -76,16 +75,32 @@ namespace ASJ
     /**
      * smoothstep
      * @brief calculing a somewhat similar to GLSL smoothstep
-     * @note shamelessly stolen from AMD
+     * @note  similar to  AMD implementation
      */
     template<class T>
-    constexpr const T  smoothstep( const T& x, const T& edge0, const T& edge1)
+    _ALWAYS_INLINE_ constexpr const T  smoothstep( const T& x, const T& edge0, const T& edge1)
     {
 	    // Scale, bias and saturate x to 0..1 range
   	    const auto X = clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
   	    // Evaluate polynomial
   	    return X * X * (3 - 2 * X);
     }
+
+    /**
+     * lerp
+     * @brief a function to linear interpolate anything thast implements '*' as multiplication
+     * lerp is a + t * (b - a)
+     * @param t     your delta, always a float
+     * @param a     your previous value
+     * @param b     your target
+     * @note  similar to std implementation
+     */
+    template<class T>
+    _ALWAYS_INLINE_ constexpr const T lerp( float t, const T& a, const T& b )
+    {
+    	return a + t * (b - a);
+    }
+
 
     // Dynamically cast an object type-safely.
     template <typename To, typename From>

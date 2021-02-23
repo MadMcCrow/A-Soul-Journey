@@ -1,10 +1,14 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
+// Camera classes
+#include "camera/camera_input.h"
+#include "camera/camera_move.h"
+#include "camera/camera_boom.h"
+// Actors classes
 #include "actors/actor_3d.h"
 #include "actors/character.h"
-#include "player/camera_control.h"
-#include "player/camera_boom.h"
+// godot include
 #include "register_types.h"
 
 #ifdef TOOLS_ENABLED
@@ -23,10 +27,12 @@ void _register_soul_journey_importer()
 
 void register_soul_journey_types() 
 {
+	// Camera Types
+	ClassDB::register_class<ASJ::CameraInput>();
+	ClassDB::register_class<ASJ::CameraMove>();
+	ClassDB::register_class<ASJ::CameraBoom>();
 
 	ClassDB::register_class<ASJ::Actor3D>();
-	ClassDB::register_class<ASJ::CameraControl>();
-	ClassDB::register_class<ASJ::CameraBoom>();
 	ClassDB::register_class<ASJ::Character>();
 
 #ifdef TOOLS_ENABLED

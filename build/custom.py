@@ -25,7 +25,7 @@ arch     = getPlatform()[2]
 platform = getPlatform()[1]
 
 #target (debug|release_debug|release)
-target="release_debug"
+target="debug"
 
 # optimize is  (speed|size) 
 optimize = "speed"

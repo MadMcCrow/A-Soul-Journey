@@ -8,7 +8,7 @@
             "name": "debug Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/godot/bin/godot.linuxbsd.opt.tools.x64.llvm.soul_journey",
+            "program": "${workspaceFolder}/godot/bin/godot.linuxbsd.tools.x64.llvm.soul_journey",
             "args": ["soul_journey/project.godot", "--editor", "--ups"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
