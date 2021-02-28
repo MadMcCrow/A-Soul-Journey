@@ -78,48 +78,48 @@ protected:
 
 
     /**
-     *  curvilinear_abs_preview
+     *  arm_length_target
      *  @brief the distance spanned on the cycloid (preview value)
      *  @note editor only preview parameter
      */
-    float curvilinear_abs_target = 10.f;
-    GET(float, curvilinear_abs_target)
+    float arm_length_target = 10.f;
+    GET(float, arm_length_target)
 #if TOOLS_ENABLED
-    _ALWAYS_INLINE_ void SETTER(curvilinear_abs_target)(float in_curvilinear_abs_target)
+    _ALWAYS_INLINE_ void SETTER(arm_length_target)(float in_arm_length_target)
     {
-        curvilinear_abs_target = clamp(in_curvilinear_abs_target, zoom_min, zoom_max);
+        arm_length_target = clamp(in_arm_length_target, zoom_min, zoom_max);
         if (Engine::get_singleton()->is_editor_hint())
         {
-            curvilinear_abs = curvilinear_abs_target;
+            arm_length = in_arm_length_target;
             update_boom();
         }
     }
 #else
-    SET(float, curvilinear_abs_target)
+    SET(float, arm_length_target)
 #endif
 
     /**
-     *  circle radius 
-     *  @brief the radius of the circle drawing the cycloid for the camera
+     *  curve_ratio  
+     *  @brief how buch to bend the camera curve
      *  @note custom setter allows changing the length in editor.
      *        the custom setter is not compiled on shipping binary
      */
-    float circle_radius = 100.f;
-    GET(float, circle_radius)
+    float curve_ratio = 4.f;
+    GET(float, curve_ratio)
 #if TOOLS_ENABLED
-    _ALWAYS_INLINE_ void SETTER(circle_radius)(float new_circle_radius)
+    _ALWAYS_INLINE_ void SETTER(curve_ratio)(float in_curve_ratio)
     {
-        circle_radius = new_circle_radius;
+        curve_ratio = in_curve_ratio;
         update_boom();
     }
 #else
-    SET(float, circle_radius)
+    SET(float, curve_ratio)
 #endif
 
 
     /**
-     *  circle radius 
-     *  @brief the radius of the circle drawing the cycloid for the camera
+     *  base_x_radian 
+     *  @brief how much to add to x rotation, in radians
      */
     float base_x_radian;
     GET(float, base_x_radian)
@@ -136,18 +136,18 @@ protected:
 private:
 
     /** find position on the cycloid to then get position and rotation in world space */
-    Vector2 get_position_on_cycloid();
+    Vector2 get_position_on_curve();
 
     /** update this node rotation and childs positions */
     void update_boom();
 
 
     /** 
-     *  curvilinear_abs
-     *  @brief the distance spanned on the cycloid, 
+     *  arm_length
+     *  @brief the length of the camera arm/boom
      *  not exposed to the editor
      */
-    float curvilinear_abs;
+    float arm_length;
 
 };
 

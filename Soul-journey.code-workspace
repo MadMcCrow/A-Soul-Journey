@@ -91,7 +91,8 @@
 			"typeindex": "cpp",
 			"typeinfo": "cpp",
 			"type_traits": "cpp",
-			"*.rh": "cpp"
+			"*.rh": "cpp",
+			"complex": "cpp"
 		},
 		"files.exclude": {
 			"**/__pycache__/**": true,
