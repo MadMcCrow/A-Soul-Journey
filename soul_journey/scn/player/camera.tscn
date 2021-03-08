@@ -22,8 +22,10 @@ material/0 = null
 script = null
 
 [node name="CameraBoom" type="CameraBoom" parent="CameraMove"]
-transform = Transform( 1, 0, 0, 0, 0.999866, 0.0163612, 0, -0.0163612, 0.999866, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.812233, 0.583333, 0, -0.583333, 0.812233, 0, 0, 0 )
+arm_length_target = 35.0
 circle_radius = 30.0
+max_curve_angle_degrees = 7.84727e-44
 zoom_speed = 10.0
 zoom_min = 10.0
 zoom_max = 120.0
@@ -31,5 +33,5 @@ zoom_input_multiplier = 2.0
 script = null
 
 [node name="Camera3D" type="Camera3D" parent="CameraMove/CameraBoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0361413 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35 )
 script = null

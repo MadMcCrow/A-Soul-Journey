@@ -88,7 +88,7 @@ namespace ASJ
 
     /**
      * lerp
-     * @brief a function to linear interpolate anything thast implements '*' as multiplication
+     * @brief a function to linear interpolate anything that implements '*' as multiplication
      * lerp is a + t * (b - a)
      * @param t     your delta, always a float
      * @param a     your previous value
@@ -101,10 +101,20 @@ namespace ASJ
     	return a + t * (b - a);
     }
 
+    /** sq @brief  power of two @param a  your value */
+    template<class T>
+    _ALWAYS_INLINE_ constexpr const T sq(const T& a)   { return a*a;}
+    /** p3 @brief  power of three @param a  your value */
+    template<class T>
+    _ALWAYS_INLINE_ constexpr const T p3(const T& a)   { return a*a*a;}
+    /** p4 @brief  power of four @param a  your value */
+    template<class T>
+    _ALWAYS_INLINE_ constexpr const T p4(const T& a)   { return a*a*a*a;}
+
 
     // Dynamically cast an object type-safely.
     template <typename To, typename From>
-    inline To* Cast(From* Src)
+    _ALWAYS_INLINE_ To* Cast(From* Src)
     {
         return Object::cast_to<To>(Src);
 

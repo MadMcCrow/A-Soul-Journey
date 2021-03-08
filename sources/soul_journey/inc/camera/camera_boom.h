@@ -73,16 +73,16 @@ protected:
      *  zoom_max 
      *  @brief how far can we get 
      */
-    float zoom_input_multiplier = 1.f;
+    float zoom_input_multiplier;
     GETSET(float, zoom_input_multiplier)
 
 
     /**
      *  arm_length_target
-     *  @brief the distance spanned on the cycloid (preview value)
+     *  @brief the desired length of the camera arm/boom
      *  @note editor only preview parameter
      */
-    float arm_length_target = 10.f;
+    float arm_length_target;
     GET(float, arm_length_target)
 #if TOOLS_ENABLED
     _ALWAYS_INLINE_ void SETTER(arm_length_target)(float in_arm_length_target)
@@ -91,6 +91,7 @@ protected:
         if (Engine::get_singleton()->is_editor_hint())
         {
             arm_length = in_arm_length_target;
+            arm_length_target = in_arm_length_target;
             update_boom();
         }
     }
@@ -99,55 +100,93 @@ protected:
 #endif
 
     /**
-     *  curve_ratio  
-     *  @brief how buch to bend the camera curve
+     *  circle_radius  
+     *  @brief the size of the 
      *  @note custom setter allows changing the length in editor.
      *        the custom setter is not compiled on shipping binary
      */
-    float curve_ratio = 4.f;
-    GET(float, curve_ratio)
+    float circle_radius;
+    GET(float, circle_radius)
 #if TOOLS_ENABLED
-    _ALWAYS_INLINE_ void SETTER(curve_ratio)(float in_curve_ratio)
+    _ALWAYS_INLINE_ void SETTER(circle_radius)(float in_circle_radius)
     {
-        curve_ratio = in_curve_ratio;
-        update_boom();
+        circle_radius = in_circle_radius;
+        if (Engine::get_singleton()->is_editor_hint())
+        {
+            update_boom();
+        }
     }
 #else
-    SET(float, curve_ratio)
+    SET(float, circle_radius)
 #endif
 
 
     /**
-     *  base_x_radian 
-     *  @brief how much to add to x rotation, in radians
+     *  max_curve_angle_degrees  
+     *  @brief we are on a circle under this limit, on the tangential line after that
+     *  @note custom setter allows changing the length in editor.
+     *        the custom setter is not compiled on shipping binary
      */
-    float base_x_radian;
-    GET(float, base_x_radian)
+    float max_curve_angle_degrees;
+    GET(float, max_curve_angle_degrees)
 #if TOOLS_ENABLED
-    _ALWAYS_INLINE_ void SETTER(base_x_radian)(float new_base_x_radian)
+    _ALWAYS_INLINE_ void SETTER(max_curve_angle_degrees)(float in_max_curve_angle_degrees)
     {
-        base_x_radian = new_base_x_radian;
-        update_boom();
+        max_curve_angle_degrees = in_max_curve_angle_degrees;
+        if (Engine::get_singleton()->is_editor_hint())
+        {
+            update_boom();
+        }
     }
 #else
-    SET(float, base_x_radian)
+    SET(float, max_curve_angle_degrees)
 #endif
+
+
+
 
 private:
 
-    /** find position on the cycloid to then get position and rotation in world space */
-    Vector2 get_position_on_curve();
+    /** 
+     *  arm_length_target
+     *  @brief the length of the camera arm/boom
+     *  not exposed to the editor
+     */
+    float arm_length;
+
+    /** find position on the curve to then get position and rotation in world space */
+    _FORCE_INLINE_ Vector2 get_camera_position() const
+    {
+            // camera path function is f(x)=If(x<Rcos(θ), R-sqrt(R^(2)-x^(2)), a x+b)
+            // a = cot(θ) = 1/tan(θ)
+            // b = R-((R)/(sin(θ)))
+            const float t = Math::deg2rad(max_curve_angle_degrees);
+            const float cost = cos(t);
+            const float sint = sin(t);
+            const float a = cost / sint;
+            const float b = circle_radius-(circle_radius/sint);
+            const auto f = [a, b, cost, this](float x) -> float {
+                                                return x < circle_radius * cost ?  
+                                                circle_radius-Math::sqrt(circle_radius *circle_radius -x*x) :
+                                                a * x + b;
+                                                };
+            // we need to figure out x:
+            // x=If(Distance(A,O)≥L,(sqrt(4 L^(2) R^(2)-L^(4)))/(2 R),(sqrt(a^(2) L^(2)-b^(2)+L^(2))-a b)/(a^(2)+1))
+            // the distance to the shifting point is : sqrt((R cos(θ))^2 + (R - R sin(θ))^2)
+            // that simplifies to R sqrt(2 - 2 sin(θ)) if R and θ are positive
+            const float x =Math::sqrt(sq(circle_radius* cost) + sq(circle_radius - circle_radius * sint)) >= arm_length ?
+                            Math::sqrt(4.f * sq(arm_length) * sq(circle_radius) - p4(arm_length)) / (2.f * circle_radius) :
+                            (Math::sqrt(sq(a) * sq(arm_length) -sq(b) + sq(arm_length))-a * b) / ( sq(a)+1.f);
+            
+            // return the vector
+            return Vector2(x, f(x));
+    }
 
     /** update this node rotation and childs positions */
     void update_boom();
 
 
-    /** 
-     *  arm_length
-     *  @brief the length of the camera arm/boom
-     *  not exposed to the editor
-     */
-    float arm_length;
+
 
 };
 
