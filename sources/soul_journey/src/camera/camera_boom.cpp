@@ -16,7 +16,8 @@ CameraBoom::~CameraBoom()
 void CameraBoom::ready()
 {
     set_process(true);
-    arm_length = arm_length_target; 
+    arm_length_target= clamp(arm_length_target, zoom_min, zoom_max);
+    arm_length =  clamp(arm_length_target, zoom_min, zoom_max);
     update_boom();
 }
 

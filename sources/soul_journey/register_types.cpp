@@ -8,6 +8,8 @@
 // Actors classes
 #include "actors/actor_3d.h"
 #include "actors/character.h"
+// Scene classes
+#include "scene/scene_spawner.h"
 // godot include
 #include "register_types.h"
 
@@ -31,9 +33,9 @@ void register_soul_journey_types()
 	ClassDB::register_class<ASJ::CameraInput>();
 	ClassDB::register_class<ASJ::CameraMove>();
 	ClassDB::register_class<ASJ::CameraBoom>();
-
 	ClassDB::register_class<ASJ::Actor3D>();
 	ClassDB::register_class<ASJ::Character>();
+	ClassDB::register_class<ASJ::SceneSpawner>();
 
 #ifdef TOOLS_ENABLED
 if (Engine::get_singleton()->is_editor_hint()) 

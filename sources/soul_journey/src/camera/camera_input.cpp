@@ -98,7 +98,7 @@ void CameraInput::_bind_methods()
 	ClassDB::bind_method(D_METHOD("_unhandled_input", "event", "in_local_coords"), &CameraInput::unhandled_input, DEFVAL(false));
     // Properties
 
-    ADD_GROUP("Nodes", "nodes_");
+    ADD_GROUP("Camera", "camera_");
     BIND_PROPERTY_GETSET(CameraInput, Variant::NODE_PATH, camera_move, PROPERTY_HINT_NODE_PATH_VALID_TYPES, "CameraMove");
     BIND_PROPERTY_GETSET(CameraInput, Variant::NODE_PATH, camera_boom, PROPERTY_HINT_NODE_PATH_VALID_TYPES, "CameraBoom");
     BIND_PROPERTY_GETSET(CameraInput, Variant::NODE_PATH, camera_3d,   PROPERTY_HINT_NODE_PATH_VALID_TYPES, "Camera3D");
