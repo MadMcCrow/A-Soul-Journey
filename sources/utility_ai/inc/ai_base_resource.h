@@ -4,7 +4,7 @@
 #ifndef UTILITY_AI_BASE_RESOURCE_H
 #define UTILITY_AI_BASE_RESOURCE_H
 
-#include "core/io/resource.h" // Node godot class
+#include "core/io/resource.h" // godot class
 
 /** UtilityAI namespace */
 namespace UtilityAI {

@@ -12,14 +12,15 @@
 // usefull classes
 #include "ai_brain_node.h"
 #include "ai_task_node.h"
-#include "ai_consideration.h"
+// considerations
+#include "ai_consideration_value.h"
 
 
 void register_utility_ai_types() 
 {
 	ClassDB::register_class<UtilityAI::AIBrainNode>();
 	ClassDB::register_class<UtilityAI::AITaskNode>();
-	ClassDB::register_class<UtilityAI::AIConsideration>();
+	ClassDB::register_class<UtilityAI::AIConsiderationValue>();
 }
 
 void unregister_utility_ai_types() 

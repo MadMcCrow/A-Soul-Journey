@@ -29,7 +29,7 @@ transform = Transform( 1, 0, 0, 0, -0.353279, 0.935518, 0, -0.935518, -0.353279,
 script = null
 
 [node name="flat_ground" type="MeshInstance3D" parent="3D_Root"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00336838, 0.0899887, -0.122939 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271618, 0.210494, 0.821076 )
 mesh = SubResource( 1 )
 material/0 = null
 script = null

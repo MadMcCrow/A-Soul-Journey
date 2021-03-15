@@ -13,5 +13,3 @@ AITaskNode::AITaskNode() : AIBaseNode()
 AITaskNode::~AITaskNode()
 {
 }
-
-
