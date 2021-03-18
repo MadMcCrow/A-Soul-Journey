@@ -47,11 +47,26 @@ public:
 
 protected:
 
+    /**
+     *  output_curve
+     *  @brief the curve to apply to this consideration
+     */
     Ref<Curve> output_curve;
+
+    /**
+     *  context_tag
+     *  @brief the tag to use to find value on context
+     */
+    String context_tag;
+
 
 public:
     _ALWAYS_INLINE_  Ref<Curve> get_output_curve() const {return output_curve;}  
     _ALWAYS_INLINE_  void       set_output_curve(Ref<Curve> curve) {output_curve = curve;}
+
+    _ALWAYS_INLINE_  String     get_context_tag() const {return context_tag;}  
+    _ALWAYS_INLINE_  void       set_context_tag(String tag) {context_tag = tag;}  
+
 
 };
 

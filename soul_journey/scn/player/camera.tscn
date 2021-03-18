@@ -34,5 +34,6 @@ script = null
 
 [node name="Camera3D" type="Camera3D" parent="CameraMove/CameraBoom"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35 )
+cull_mask = 524287
 far = 10000.0
 script = null

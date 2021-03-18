@@ -23,8 +23,6 @@ public:
     // dstr
     ~AIBaseNode();
 
-
-
 };
 
 } // namespace UtilityAI

@@ -5,6 +5,8 @@
 #define UTILITY_AI_BRAIN_NODE_H
 
 #include "ai_base_node.h" 
+#include "ai_context.h"
+
 
 /** UtilityAI namespace */
 namespace UtilityAI {
@@ -22,6 +24,14 @@ public:
 
     // dstr
     ~AIBrainNode();
+
+protected:
+
+    /**
+     *  agent_context:
+     *  @brief context for this brain. it will store the necessary values for this  
+     */
+    Ref<AIContext> agent_context;
 
 
 
