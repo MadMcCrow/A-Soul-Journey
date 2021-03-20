@@ -12,7 +12,7 @@
    width="16"
    version="1.1"
    id="svg4"
-   sodipodi:docname="AIBrainNode.svg"
+   sodipodi:docname="AttributesNode.svg"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15)">
   <metadata
      id="metadata10">
@@ -22,6 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -209,24 +210,23 @@
      inkscape:window-height="1007"
      id="namedview6"
      showgrid="false"
-     inkscape:zoom="26.870961"
-     inkscape:cx="12.47343"
-     inkscape:cy="10.225324"
+     inkscape:zoom="16"
+     inkscape:cx="20.409265"
+     inkscape:cy="2.6493459"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g1129"
+     inkscape:current-layer="svg4"
      inkscape:document-rotation="0" />
-  <g
-     id="g1129"
-     transform="matrix(1.2170049,0,0,1.2170049,-1.7003821,-1.4145561)">
-    <path
-       id="rect850"
-       style="fill:#9cfcf6;fill-opacity:0.996078;stroke:none;stroke-width:2.74099;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:0.996078;paint-order:stroke fill markers"
-       d="m 6.9863281,1.515625 c -0.2992063,0 -0.5390625,0.2418093 -0.5390625,0.5410156 v 1.90625 H 5.53125 V 3.8046875 c 0,-0.2992064 -0.2418093,-0.5410156 -0.5410156,-0.5410156 -0.2992064,0 -0.5390625,0.2418092 -0.5390625,0.5410156 v 3.9589844 c -0.026378,-0.00416 -0.050543,-0.015625 -0.078125,-0.015625 H 3.5351562 V 5.53125 c 1e-7,-0.2992064 -0.2418092,-0.5390625 -0.5410156,-0.5390625 -0.2992063,0 -0.5390625,0.2398561 -0.5390625,0.5390625 v 4.2089844 c 0,0.2992066 0.2398562,0.5390626 0.5390625,0.5390626 0.2992064,0 0.5410156,-0.239856 0.5410156,-0.5390626 V 8.9824219 h 0.8378907 c 0.027531,0 0.051793,-0.011483 0.078125,-0.015625 V 11.46875 c 0,0.299206 0.2398561,0.539062 0.5390625,0.539062 0.2992063,0 0.5410156,-0.239856 0.5410156,-0.539062 V 5.1464844 h 0.9160156 v 8.0703126 c 0,0.299206 0.2398562,0.539062 0.5390625,0.539062 0.2992064,0 0.5410157,-0.239856 0.5410157,-0.539062 V 2.0566406 c 0,-0.2992063 -0.2418093,-0.5410156 -0.5410157,-0.5410156 z" />
-    <path
-       id="rect850-7"
-       style="fill:#9cfcf6;fill-opacity:0.5;stroke:none;stroke-width:2.74099;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:0.996078;paint-order:stroke fill markers"
-       d="m 8.9824219,1.5078125 c -0.2992064,0 -0.5390625,0.2398561 -0.5390625,0.5390625 v 11.160156 c 0,0.299207 0.2398561,0.539063 0.5390625,0.539063 0.2992063,0 0.5410156,-0.239856 0.5410156,-0.539063 v -2.314453 h 0.9160155 v 0.566406 c 0,0.299207 0.239856,0.541016 0.539063,0.541016 0.299206,0 0.541015,-0.241809 0.541015,-0.541016 V 7.0410156 h 0.916016 v 2.6894532 c 0,0.2992062 0.239856,0.5410152 0.539062,0.5410152 0.299207,0 0.541016,-0.241809 0.541016,-0.5410152 V 5.5234375 c 0,-0.2992064 -0.241809,-0.5410156 -0.541016,-0.5410156 -0.299206,0 -0.539062,0.2418092 -0.539062,0.5410156 v 0.28125 H 11.519531 V 3.7949219 c 0,-0.2992064 -0.241809,-0.5410157 -0.541015,-0.5410157 -0.299207,0 -0.539063,0.2418093 -0.539063,0.5410157 V 9.5585938 H 9.5234375 V 2.046875 c 0,-0.2992064 -0.2418093,-0.5390625 -0.5410156,-0.5390625 z" />
-  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:800;font-stretch:normal;font-size:26.6652px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Ultra-Bold';fill:#e0e0e0;stroke-width:0.66663"
+     x="-0.075649023"
+     y="15.301786"
+     id="text928"><tspan
+       sodipodi:role="line"
+       id="tspan926"
+       x="-0.075649023"
+       y="15.301786"
+       style="stroke-width:0.66663">a</tspan></text>
 </svg>

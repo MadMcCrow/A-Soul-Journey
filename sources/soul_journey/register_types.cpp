@@ -7,7 +7,10 @@
 #include "camera/camera_boom.h"
 // Actors classes
 #include "actors/actor_3d.h"
-#include "actors/character.h"
+// Character classes
+#include "characters/character.h"
+#include "characters/character_control.h"
+#include "characters/character_ai_task_move.h"
 // Scene classes
 #include "scene/scene_spawner.h"
 // godot include
@@ -35,6 +38,8 @@ void register_soul_journey_types()
 	ClassDB::register_class<ASJ::CameraBoom>();
 	ClassDB::register_class<ASJ::Actor3D>();
 	ClassDB::register_class<ASJ::Character>();
+	ClassDB::register_class<ASJ::CharacterControl>();
+	ClassDB::register_class<ASJ::CharacterAITaskMove>();
 	ClassDB::register_class<ASJ::SceneSpawner>();
 
 #ifdef TOOLS_ENABLED

@@ -8,8 +8,11 @@
 # Get environment
 Import('env')
 
+
+
 # First, create a custom env for the shared library.
 module_env = env.Clone()
+
 
 # generate module name
 try:

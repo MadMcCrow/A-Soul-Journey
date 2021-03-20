@@ -1,7 +1,7 @@
 /* Copyright © Noé Perard-Gayot 2021. */
 /* Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php */
 
-#include "actors/character.h"
+#include "characters/character.h"
 #include "scene/3d/navigation_agent_3d.h"
 #include "scene/3d/navigation_region_3d.h"
 
