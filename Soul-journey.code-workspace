@@ -14,7 +14,7 @@
 		},
 		{
 			"name": "Sources",
-			"path": "./sources",
+			"path": "./modules",
 		},
 		{
 			"name": "Build",
@@ -93,7 +93,8 @@
 			"type_traits": "cpp",
 			"*.rh": "cpp",
 			"complex": "cpp",
-			"*.inc": "cpp"
+			"*.inc": "cpp",
+			"variant": "cpp"
 		},
 		"files.exclude": {
 			"**/__pycache__/**": true,

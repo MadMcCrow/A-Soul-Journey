@@ -18,7 +18,7 @@ from godotbuildtool.functions.git      import getGitFolders
 
 
 extra_suffix = "soul_journey"
-custom_modules = findFolder("../", "sources")
+custom_modules = findFolder("../", "modules")
 
 bits     = getPlatform()[0]
 arch     = getPlatform()[2]

@@ -35,7 +35,7 @@ public:
      *  @brief Get final value of that consideration
      *  @param context the context to take into account
      */
-    virtual float Evaluate(class AIContext* context);
+    virtual float evaluate(class AIContext* context);
 
      /**
      *  RawValue
@@ -43,7 +43,7 @@ public:
      *  basically ignore the curve and the possible normalisation
      *  @param context the context to take into account
      */
-    virtual float RawValue(class AIContext* context);
+    virtual float raw_value(class AIContext* context);
 
 protected:
 
@@ -67,6 +67,8 @@ public:
     _ALWAYS_INLINE_  String     get_context_tag() const {return context_tag;}  
     _ALWAYS_INLINE_  void       set_context_tag(String tag) {context_tag = tag;}  
 
+
+    virtual RID get_rid() const override;
 
 };
 

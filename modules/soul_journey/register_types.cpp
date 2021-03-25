@@ -13,6 +13,8 @@
 #include "characters/character_ai_task_move.h"
 // Scene classes
 #include "scene/scene_spawner.h"
+// Attributes
+#include "attributes/attributes_node.h"
 // godot include
 #include "register_types.h"
 
@@ -40,6 +42,7 @@ void register_soul_journey_types()
 	ClassDB::register_class<ASJ::Character>();
 	ClassDB::register_class<ASJ::CharacterControl>();
 	ClassDB::register_class<ASJ::CharacterAITaskMove>();
+	ClassDB::register_class<ASJ::Attributes_node>();
 	ClassDB::register_class<ASJ::SceneSpawner>();
 
 #ifdef TOOLS_ENABLED

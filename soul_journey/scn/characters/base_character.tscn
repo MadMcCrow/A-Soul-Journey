@@ -17,3 +17,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0218468, 0 )
 mesh = SubResource( 2 )
 material/0 = null
 script = null
+
+[node name="AIBrainNode" type="AIBrainNode" parent="."]
+script = null
+
+[node name="CharacterAITaskMove" type="CharacterAITaskMove" parent="AIBrainNode"]
+script = null

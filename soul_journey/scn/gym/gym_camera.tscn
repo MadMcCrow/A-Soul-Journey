@@ -45,6 +45,7 @@ navmesh = SubResource( 1 )
 script = null
 
 [node name="flat_ground" type="MeshInstance3D" parent="3D_Root/Navigation3D/NavigationRegion3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0269032, 0, 0.00214195 )
 mesh = SubResource( 2 )
 material/0 = null
 script = null
@@ -65,4 +66,13 @@ script = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )
+script = null
+
+[node name="AIBrainNode" type="AIBrainNode" parent="."]
+script = null
+
+[node name="AITaskNode" type="AITaskNode" parent="AIBrainNode"]
+considerations = {
+Resource( "res://ai/ai_test.tres" ): 1
+}
 script = null

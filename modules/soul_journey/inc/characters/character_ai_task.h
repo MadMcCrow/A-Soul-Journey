@@ -3,7 +3,8 @@
 
 #ifndef ASJ_CHARACTER_AI_TASK_H
 #define ASJ_CHARACTER_AI_TASK_H
-#include "sources/utility_ai/ai_task_node.h"
+
+#include "modules/utility_ai/ai_task_node.h"
 #include "core/notification_interface.h"
 #include "static_helper.h"
 

@@ -5,7 +5,7 @@
 #define UTILITY_AI_CONTEXT_H
 
 #include "core/object/reference.h" // godot class
-#include <optional>
+
 
 /** UtilityAI namespace */
 namespace UtilityAI {
@@ -28,8 +28,9 @@ public:
 
 private:
 
+    /** @brief values passed to context land here */
     Map<String, float> context_values;
-    
+
 public:
 
     /**
@@ -48,7 +49,7 @@ public:
 
     /**
      *  get_context_value
-     *  @brief remove every info stored in this context
+     *  @brief get the value associated with this name key
      *  @param name     the name of the value you want
      *  @return         the value or -1 if not defined
      */
@@ -56,20 +57,11 @@ public:
 
     /**
      *  value_exists
-     *  @brief remove every info stored in this context
+     *  @brief does a value exist with this key ?
      *  @param name     the name of the value you want
      *  @return         true if value defined
      */
     virtual bool value_exists(String name) const;
-
-    /**
-     *  get_context_value
-     *  @brief remove every info stored in this context
-     *  @param name     the name of the value you want
-     *  @return         the value or not defined 
-     */
-    virtual std::optional<float> get_context_value_checked(String name) const;
-
 
 };
 

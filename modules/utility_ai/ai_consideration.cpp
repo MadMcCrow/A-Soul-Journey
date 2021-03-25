@@ -17,21 +17,21 @@ AIConsideration::~AIConsideration()
 }
 
 
-float AIConsideration::Evaluate(class AIContext* context)
+float AIConsideration::evaluate(AIContext* context)
 {
     if (output_curve.is_valid())
     {
         // will bake the curve if necessary
-        return output_curve->interpolate_baked(RawValue(context));
+        return output_curve->interpolate_baked(raw_value(context));
     }
-    return RawValue(context);
+    return raw_value(context);
 }
 
-float AIConsideration::RawValue(class AIContext* context)
+float AIConsideration::raw_value(AIContext* context)
 {
-    if (context)
+    if (context != nullptr && context->value_exists(get_context_tag()))
     {
-        return context->get_context_value_checked(get_context_tag()).value_or(0);
+        return context->get_context_value(get_context_tag());
     }
     return 0;
 }
@@ -48,3 +48,18 @@ void AIConsideration::_bind_methods()
     ADD_PROPERTY(PropertyInfo( Variant::STRING, "context_tag", PROPERTY_HINT_NONE, "Tag for value"), "set_context_tag", "get_context_tag" );
 }
 
+
+RID AIConsideration::get_rid() const
+{   
+    String unique_hash_name;
+    if (output_curve.is_valid())
+    {
+        const int count = output_curve->get_point_count();
+        for (int idx = 0; idx < count; idx ++)
+        {
+            auto point = output_curve->get_point(idx);
+            unique_hash_name += String(point.pos) + itos(int(point.left_mode)) + itos(int(point.right_mode)) + itos(int(point.right_tangent))+ itos(int(point.left_tangent));
+        }
+    }
+    return RID::from_uint64(unique_hash_name.hash64());
+}

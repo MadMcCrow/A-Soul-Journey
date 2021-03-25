@@ -47,18 +47,6 @@ bool AIContext::value_exists(String name) const
     return false;
 }
 
-
-std::optional<float> AIContext::get_context_value_checked(String name) const
-{
-    if (const Map<String,float>::Element * found = context_values.find(name))
-    {
-        return found->value();
-    }
-    return std::optional<float>(); // will be optional, thus you're sure that's not valid
-}
-
-
-
 void AIContext::_bind_methods()
 {
 
@@ -69,4 +57,3 @@ void AIContext::_bind_methods()
     ClassDB::bind_method(D_METHOD( "reset"), &AIContext::reset);
 
 }
-

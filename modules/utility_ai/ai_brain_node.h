@@ -11,6 +11,8 @@
 /** UtilityAI namespace */
 namespace UtilityAI {
 
+class AITaskNode;
+
 /**
  *  AIBrainNode
  *  @brief makes decision
@@ -25,7 +27,26 @@ public:
     // dstr
     ~AIBrainNode();
 
+    void _notification(int p_what);
+
 protected:
+
+    /**
+     *  @brief send context to consideration, evaluate tasks and do something
+     */
+    virtual void update();
+
+    /**
+     *  @brief get all child nodes that are tasks
+     */
+    virtual List<AITaskNode*> get_all_tasks() const;
+
+    /**
+     *  @brief run a task as current task
+     */
+    virtual void execute_task(AITaskNode *task);
+
+private:
 
     /**
      *  agent_context:
@@ -33,6 +54,17 @@ protected:
      */
     Ref<AIContext> agent_context;
 
+    /**
+     *  tasks:
+     *  @brief all stored tasks this brain can decide to do
+     */ 
+    List<AITaskNode*> tasks;
+
+    /**
+     *  active_task:
+     *  @brief the task currently running
+     */
+    AITaskNode* active_task;
 
 
 };

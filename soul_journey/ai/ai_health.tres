@@ -1,7 +1,0 @@
-[gd_resource type="AIConsiderationValue" load_steps=2 format=2]
-
-[sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[resource]
-output_curve = SubResource( 1 )
