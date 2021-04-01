@@ -58,7 +58,7 @@ Dictionary AITaskNode::get_considerations() const
     return godot_dict;
 }
 
-void AITaskNode::set_considerations(const Array &Dict)
+void AITaskNode::set_considerations(const Dictionary &Dict)
 {
     for (int idx = 0; idx < Dict.size(); idx++)
     {

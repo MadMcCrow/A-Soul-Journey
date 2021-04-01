@@ -46,7 +46,7 @@ void CameraBoom::update_boom()
 
     // we choose x as rotation and z as translation
     // set rotation on us
-    set_rotation(Vector3(-angle,0.f,0.f) );
+    set_rotation(Vector3(angle + M_PI ,0.f, M_PI) );
     // and translation on childs
     for (int c = get_child_count() -1 ; c>=0; c--)
     {
@@ -64,7 +64,7 @@ void CameraBoom::_bind_methods()
     BIND_PROPERTY_GETSET(CameraBoom, Variant::FLOAT, max_curve_angle_degrees,   PROPERTY_HINT_RANGE,      "1,90,1,1");
 
     BIND_PROPERTY_GETSET(CameraBoom, Variant::FLOAT, zoom_speed, PROPERTY_HINT_RANGE,  "0,200,10,1");
-    BIND_PROPERTY_GETSET(CameraBoom, Variant::FLOAT, zoom_min,   PROPERTY_HINT_RANGE,  "0.1,200,10,1");
+    BIND_PROPERTY_GETSET(CameraBoom, Variant::FLOAT, zoom_min,   PROPERTY_HINT_RANGE,  "0.1,200,1,1");
     BIND_PROPERTY_GETSET(CameraBoom, Variant::FLOAT, zoom_max,   PROPERTY_HINT_RANGE,  "0.1,200,10,1");
 
     BIND_PROPERTY_GETSET(CameraBoom, Variant::FLOAT, zoom_input_multiplier,   PROPERTY_HINT_RANGE,  "1,10,1,1");

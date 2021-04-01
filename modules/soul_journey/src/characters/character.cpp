@@ -16,9 +16,17 @@ Character::~Character()
 {
 }
 
+void Character::ready()
+{
+    set_physics_process(true);
+    initialize_navigation();
+}
+
 void Character::physics_process(float delta)
 {
-
+    if (is_inside_tree())
+        update_movement();
+    
 }
 
 Vector3 Character::get_ground_normal() const
@@ -38,23 +46,40 @@ Vector3 Character::get_ground_normal() const
 }
 
 
-void Character::UpdateMovement()
+void Character::update_movement()
 {
-    if (navigation_agent)
+    if (navigation_agent_node != nullptr)
     {
-        const auto gravity_direction = Vector3(0.f, -1.f, 0.f); 
-        const auto target = navigation_agent->get_next_location();
+        const auto gravity_direction = Vector3(0.f, -1.f, 0.f);
+        const auto target = navigation_agent_node->get_next_location();
         const auto pos = get_global_transform().origin;
-
-        const auto vel = (target - pos).slide(get_ground_normal()).normalized() * navigation_agent->get_max_speed();
-
-        //TODO: Add slope calculation, speed management 
-        move_and_slide(vel,gravity_direction *-1);
+        const auto vel = (target - pos).slide(get_ground_normal()).normalized() * navigation_agent_node->get_max_speed();
+        move_and_slide(vel, gravity_direction * -1, false, 4 /* max slope*/, Math::deg2rad(45.f) /* max slope angle*/, false /*infinite inertia */ );
     }
+}
+
+
+void Character::initialize_navigation()
+{
+ 
+    navigation_agent_node  = Cast<NavigationAgent3D>(get_node(navigation_agent));
+    navigation_region_node = Cast<NavigationRegion3D>(get_node(navigation_region));
+#ifdef TOOLS_ENABLED
+    if (navigation_region_node == nullptr)
+    {
+        print_error(String(__func__) + String(" : Could not find Navigation Region 3D in tree"));
+    }
+
+    if (navigation_agent_node == nullptr)
+    {
+        print_error(String(__func__) + String(" : Could not find Navigation Agent 3D in tree"));
+    }
+#endif // TOOLS_ENABLED
 }
 
 
 void Character::_bind_methods()
 {
-    
+    BIND_PROPERTY_GETSET(Character, Variant::NODE_PATH, navigation_agent, PROPERTY_HINT_NODE_PATH_VALID_TYPES, "NavigationAgent3D");
+    BIND_PROPERTY_GETSET(Character, Variant::NODE_PATH, navigation_region, PROPERTY_HINT_NODE_PATH_VALID_TYPES, "NavigationRegion3D");
 }

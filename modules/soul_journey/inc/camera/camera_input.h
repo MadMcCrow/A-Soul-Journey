@@ -70,14 +70,21 @@ public:
      */
     void move_on_mouse_screen_border(float delta);
 
+    /**
+     *  get_movement_scale
+     *  @brief affect how speed changes
+     *  @return by how much you should multiply the movement speed
+     */
+    virtual float get_movement_scale() const;
+
 protected:
 
     /**
      *  border_margin 
      *  @brief how many pixels are considered border (for movement detection)
      */
-    Point2i border_margin = Point2i(10,10);
-    GETSET(Point2i, border_margin)
+    Point2i input_border_margin = Point2i(10,10);
+    GETSET(Point2i, input_border_margin)
 
 
     /**
@@ -157,6 +164,13 @@ protected:
      */
     String input_move_down_name;
     GETSET(String, input_move_down_name)
+
+    /**
+     *  input_scale 
+     *  @brief how much should we scale the input
+     */
+    float input_scale;
+    GETSET(float, input_scale)
 
 
 private:

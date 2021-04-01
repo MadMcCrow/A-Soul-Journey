@@ -70,7 +70,6 @@ protected:
     Map<Ref<AIConsideration>, float> considerations;
 
 
-
 #ifdef TOOLS_ENABLED
 private:
 

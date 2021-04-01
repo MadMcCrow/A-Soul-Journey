@@ -46,6 +46,14 @@ public:
      */
     void add_zoom_offset(float delta);
 
+
+    /**
+     *  get_arm_length
+     *  @brief distance between camera and this node 
+     *  @return the current length of the camera boom
+     */
+    _ALWAYS_INLINE_ float get_arm_length() const {return arm_length;}
+
 protected:
 
     /**

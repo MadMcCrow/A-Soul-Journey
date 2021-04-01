@@ -4,7 +4,7 @@
 #ifndef ASJ_CAMERA_MOVE_H
 #define ASJ_CAMERA_MOVE_H
 
-#include "scene/3d/node_3d.h" // Node godot class
+#include "scene/3d/physics_body_3d.h" // KinematicBody3D
 #include "core/notification_interface.h"
 #include "core/input/input_event.h"
 #include "static_helper.h"
@@ -16,8 +16,8 @@ namespace ASJ {
  *  CameraMove 
  *  @brief root node to move a camera around
  */
-class CameraMove : public Node3D, public NotificationInterface {
-    GDCLASS(CameraMove, Node3D);
+class CameraMove : public KinematicBody3D, public NotificationInterface {
+    GDCLASS(CameraMove, KinematicBody3D);
     NOTIFICATIONS()
 
 protected:
@@ -37,14 +37,15 @@ protected:
 
     virtual void physics_process(float delta) override;
 
-
 public:
 
     /**
-     *  AddMoveInput
+     *  add_move_input
      *  @brief ask the camera to move in a direction 
+     *  @param direction_local_space Direction we should move, in local space 
+     *  @note  for performance rason we transform to world space only when we perform the move command
      */
-    void AddMoveInput(const Vector2 &Direction);
+    void add_move_input(const Vector3 &direction_local_space);
 
 protected:
 
@@ -52,17 +53,16 @@ protected:
      *  move_speed 
      *  @brief how fast this camera moves
      */
-    float move_speed = 10;
+    float move_speed = 100;
     GETSET(float, move_speed)
 
-    /**
-     *  CameraBoom 
-     *  @brief the camera boom that we have in our child tree
-     */
-    NodePath CameraBoom;
-    GETSET(NodePath, CameraBoom)
+private: 
 
+    Vector3 cumulative_move_input;
 
+    Vector3 velocity;
+
+    float camera_gravity = 100;
 };
 
 } // namespace ASJ

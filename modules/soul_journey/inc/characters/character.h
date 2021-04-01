@@ -33,24 +33,27 @@ public:
     ~Character();
 
     /** overriden from @see NotificationInterface */
+    virtual void ready() override;
+
+    /** overriden from @see NotificationInterface */
     virtual void physics_process(float delta) override;
 
-protected:
+private:
 
     /**
      *  navigation
      *  @brief where we can move
      */
-    NavigationRegion3D* navigation;
-    GETSET_COPY(NavigationRegion3D*, navigation)
+    NavigationRegion3D* navigation_region_node  = nullptr;
+    
 
     /**
      *  navigation_agent
      *  @brief where we can move
      */
-    NavigationAgent3D* navigation_agent;
-    GETSET_COPY(NavigationAgent3D*, navigation_agent)
+    NavigationAgent3D* navigation_agent_node = nullptr;
 
+protected:
 
     /**
      *  navigation_agent
@@ -58,6 +61,21 @@ protected:
      */
     float ground_ray_trace_length;
     GETSET(float, ground_ray_trace_length)
+
+    /**
+     *  navigation_agent 
+     *  @brief the agent for this character
+     */
+    NodePath navigation_agent;
+    GETSET(NodePath, navigation_agent)
+
+    /**
+     *  navigation_region 
+     *  @brief the navigation region this character uses
+     */
+    NodePath navigation_region;
+    GETSET(NodePath, navigation_region)
+
 
 
 public:
@@ -77,11 +95,16 @@ public:
 protected:
 
     // will update the position of the character at physics_process
-    void UpdateMovement();
+    void update_movement();
 
-public:
+private:
 
- static void _bind_methods();
+    /**
+     *  @brief will find navigation and save it
+     */
+    void initialize_navigation();
+
+    static void _bind_methods();
 
 };
 

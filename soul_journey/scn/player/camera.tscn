@@ -1,39 +1,62 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[sub_resource type="SphereMesh" id=1]
+[ext_resource path="res://shd/editor_shader.shader" type="Shader" id=1]
 
-[node name="CameraInput" type="CameraInput"]
-camera_move = NodePath("CameraMove")
-camera_boom = NodePath("CameraMove/CameraBoom")
-camera_3d = NodePath("CameraMove/CameraBoom/Camera3D")
+[sub_resource type="BoxMesh" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/color = Color( 0.717647, 0, 0, 1 )
+
+[sub_resource type="SphereShape3D" id=3]
+
+[node name="CameraMove" type="CameraMove"]
+process_priority = 1
+top_level = true
+collision_mask = 0
+move_speed = 400.0
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+layers = 524289
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+script = null
+
+[node name="CameraBoom" type="CameraBoom" parent="."]
+transform = Transform( -1, 8.74228e-08, 0, 4.0109e-08, 0.458793, 0.888543, 7.76789e-08, 0.888543, -0.458793, 0, 2, 0 )
+arm_length_target = 30.0
+circle_radius = 10.0
+max_curve_angle_degrees = 12.0
+zoom_speed = 10.0
+zoom_min = 0.1
+zoom_max = 40.0
+zoom_input_multiplier = 1.0
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="CameraBoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30 )
+cull_mask = 524287
+far = 100000.0
+script = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 3 )
+script = null
+
+[node name="CameraInput" type="CameraInput" parent="."]
+camera_move = NodePath("..")
+camera_boom = NodePath("../CameraBoom")
+camera_3d = NodePath("../CameraBoom/Camera3D")
+input_scale = 5.0
 input_zoom_in_name = "zoom_in"
 input_zoom_out_name = "zoom_out"
-script = null
-
-[node name="CameraMove" type="CameraMove" parent="."]
-process_priority = 1
-script = null
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraMove"]
-transform = Transform( 1, 0, 0, 0, 0.831867, 0.554975, 0, -0.554975, 0.831867, 0, 0, 0 )
-layers = 524288
-mesh = SubResource( 1 )
-material/0 = null
-script = null
-
-[node name="CameraBoom" type="CameraBoom" parent="CameraMove"]
-transform = Transform( 1, 0, 0, 0, 0.812233, 0.583333, 0, -0.583333, 0.812233, 0, 0, 0 )
-arm_length_target = 35.0
-circle_radius = 30.0
-max_curve_angle_degrees = 7.84727e-44
-zoom_speed = 10.0
-zoom_min = 10.0
-zoom_max = 120.0
-zoom_input_multiplier = 2.0
-script = null
-
-[node name="Camera3D" type="Camera3D" parent="CameraMove/CameraBoom"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35 )
-cull_mask = 524287
-far = 10000.0
+input_rotate_left_name = "rotate_left"
+input_rotate_right_name = "rotate_right"
+input_move_up_name = "move_up"
+input_move_down_name = "move_down"
+input_move_left_name = "move_left"
+input_move_right_name = "move_right"
 script = null

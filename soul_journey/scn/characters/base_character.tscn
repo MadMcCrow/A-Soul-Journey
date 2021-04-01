@@ -5,6 +5,8 @@
 [sub_resource type="CapsuleMesh" id=2]
 
 [node name="Character" type="Character"]
+collision_mask = 0
+navigation_agent = NodePath("NavigationAgent3D")
 script = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -22,4 +24,9 @@ script = null
 script = null
 
 [node name="CharacterAITaskMove" type="CharacterAITaskMove" parent="AIBrainNode"]
+considerations = {
+}
+script = null
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 script = null
