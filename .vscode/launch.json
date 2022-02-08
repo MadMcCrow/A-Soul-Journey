@@ -5,15 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "debug Launch",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/godot/bin/godot.linuxbsd.tools.x64.llvm.soul_journey",
-            "args": ["soul_journey/project.godot", "--editor", "--ups"],
+            "program": "${workspaceFolder}/godot/bin/godot.linuxbsd.opt.tools.64",
+            "args": ["${workspaceFolder}/armory/project.godot", "--editor", "--ups"],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${fileDirname}",
             "environment": [],
-            "console": "externalTerminal",
+            "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
                 {

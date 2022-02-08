@@ -3,7 +3,7 @@
 # blender_export.py :
 #                       helper to export every blender file into obj
 #
-# Copyright © Noé Perard-Gayot 2021.                                                                                        #
+# Copyright © Noé Perard-Gayot 2020.                                                                                        #
 # Licensed under the MIT License. You may obtain a copy of the License at https://opensource.org/licenses/mit-license.php   #
 #
 
